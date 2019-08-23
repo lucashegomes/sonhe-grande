@@ -1,0 +1,21 @@
+<ui-view name="header"></ui-view>
+
+<div id="wrapper">
+	<div id="layout-static">
+		<ui-view name="sideBar" class="static-sidebar-wrapper sidebar-midnightblue"></ui-view>
+		<div class="static-content-wrapper">
+			<div class="static-content">
+				<ui-view name="content"></ui-view>
+			</div>
+			<footer role="contentinfo" ng-cloak>
+				<div class="clearfix">
+					<ul class="list-unstyled list-inline pull-left">
+						<li>
+							<h6 style="margin: 0;">&copy; Microlins</h6>
+						</li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+	</div>
+</div>

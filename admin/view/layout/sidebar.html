@@ -1,0 +1,25 @@
+<div class="static-sidebar" role="navigation">
+	<div class="sidebar">
+		<div class="widget" ng-cloak>
+			<div class="widget-body">
+				<div class="userinfo">
+					<div class="info" style="padding-left: 0">
+						<span class="username"> </span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="widget stay-on-collapse">
+			<nav class="widget-body">
+				<ul ng-controller="NavigationController" class="acc-menu" sticky-scroll="40">
+					<li ng-repeat="item in menu" ng-class="{ hasChild: (item.children!==undefined),
+					active: item.selected,
+					open: (item.children!==undefined) && item.open,
+					'nav-separator': item.separator==true,
+					'search-focus': (searchQuery.length>0 && item.selected) }" ng-show="!(searchQuery.length && !item.selected)" ng-include="'view/templates/nav_renderer.html'"></li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+</div>
