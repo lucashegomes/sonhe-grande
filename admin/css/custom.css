@@ -1,0 +1,84 @@
+p.Quente {
+    color: #ff3b00;
+}
+
+p.Morno {
+    color: #ffa620;
+}
+
+p.Frio {
+    color: #5bc0de;
+}
+
+input.Quente {
+    background-color: #ff3b00 !important;
+    border-color: #ff3b00 !important;
+    color: #fff;
+    font-weight: bold;
+}
+
+input.Morno {
+    background-color: #ffa620 !important;
+    border-color: #ffa620 !important;
+    color: #fff;
+    font-weight: bold;
+}
+
+input.Frio {
+    background-color: #5bc0de !important;
+    border-color: #5bc0de !important;
+    color: #fff;
+    font-weight: bold;
+}
+
+.modal-open {
+    padding-right: 17px;
+}
+
+
+/*=============================================
+=            Loading Panel            =
+=============================================*/
+
+.panel-loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.panel-loader-circular-img {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -45px;
+    margin-left: -45px;
+}
+
+.panel-loader-circular-img img {
+    width: 90px;
+    height: 90px;
+}
+
+.panel-loading.small .panel-loader-circular-img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+.panel-loading.small .panel-loader-circular-img img {
+    width: 40px;
+    height: 40px;
+}
+
+
+/*=====  End of Loading Panel  ======*/
