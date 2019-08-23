@@ -1,0 +1,215 @@
+<div class="container-fluid">
+	<div data-widget-group="group1" style="margin-top: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+
+			</div>
+		</div>
+	</div>
+
+	<div data-widget-group="group1">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-teal" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+					<div class="panel-heading" style="background-color: #dadada;border-color: #797979;">
+						<h2 style="color: rgb(59, 59, 59);">Total de Estampas</h2>
+					</div>
+					<div class="panel-body no-padding">
+						<table class="table browsers m-n">
+							<tbody>
+								<tr>
+									<td class="text-center">
+										<h1 style="margin: 0; font-size: 129px; font-weight: 700;">
+											{{vm.totalLeads}}
+										</h1>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="panel panel-teal" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+					<div class="panel-heading" style="background-color: #706e00;border-color: #575402;">
+						<h2 style="color: #e0f7fa;">Estampas Aguardando</h2>
+					</div>
+					<div class="panel-body no-padding">
+						<table class="table browsers m-n">
+							<tbody>
+								<tr>
+									<td>Aguardando</td>
+									<td class="text-right">{{vm.EstampasAguardando | number:0}}%</td>
+									<td class="vam" style="width: 156px;">
+										<div class="progress m-n">
+											<div class="progress-bar progress-bar-teal" style="width: {{vm.EstampasAguardando }}%; background-color: #607d8b"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="panel panel-teal" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+					<div class="panel-heading" style="background-color: #237a08;border-color: #206d07;">
+						<h2 style="color: #e0f7fa;">Estampas Aprovadas</h2>
+					</div>
+					<div class="panel-body no-padding">
+						<table class="table browsers m-n">
+							<tbody>
+								<tr>
+									<td>Confirmadas</td>
+									<td class="text-right">{{vm.EstampasAprovadas | number:0}}%</td>
+									<td class="vam" style="width: 156px;">
+										<div class="progress m-n">
+											<div class="progress-bar progress-bar-teal" style="width: {{vm.EstampasAprovadas}}%; background-color: #607d8b"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-teal" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+					<div class="panel-heading" style="background-color: #d26069;border-color: #ff1c2e;">
+						<h2 style="color: #fff;">Estampas não Aprovadas</h2>
+					</div>
+					<div class="panel-body no-padding">
+						<table class="table browsers m-n">
+							<tbody>
+								<tr>
+									<td>Não Confirmadas</td>
+									<td class="text-right">{{vm.EstampasNaoAprovadas | number:0}}%</td>
+									<td class="vam" style="width: 156px;">
+										<div class="progress m-n">
+											<div class="progress-bar progress-bar-teal" style="width: {{vm.EstampasNaoAprovadas}}%; background-color: #607d8b"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-sky" data-widget='{"draggable": "false"}'>
+				<div class="panel-heading" style="background-color: #9e9e9e;border-color: #9e9e9e;">
+					<h2 style="color: #fafafa;">Últimas Estampas</h2>
+					<div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table st-table="displayedCollection" st-safe-src="vm.Estampas" class="table table-striped">
+							<thead>
+								<tr>
+									<th colspan="4"></th>
+									<th colspan="3">
+										<input st-search="" class="form-control" placeholder="Busca" type="text" style="margin-bottom: 20px" />
+									</th>
+								</tr>
+								<tr>
+									<th st-sort="nome" style="padding-right:100px">Titulo</th>
+									<th>
+										<select st-input-event="change" st-search="nstatus">
+											<option value="">Todos</option>
+											<option value="Aguardando">Aguardando</option>
+											<option value="Aprovada">Aprovada</option>
+											<option value="Reprovada">Reprovada</option>
+										</select>
+									</th>
+									<th>Ver</th>
+									<th>Aprovar</th>
+									<th>Reprovar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="Lead in displayedCollection track by Lead.id">
+									<td>{{Lead.titulo}}</td>
+									<td class="text-info" ng-if="Lead.aprovada == '0'">Aguardando</td>
+									<td class="text-success" ng-if="Lead.aprovada == '1'">Aprovada</td>
+									<td class="text-danger" ng-if="Lead.aprovada == '2'">Reprovada</td>
+									<td>
+										<button ng-click="vm.openModalCadastro('modal-cadastro', Lead)" class="btn btn-warning">
+											<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+										</button>
+									</td>
+									<td>
+										<button ng-click="vm.confirma(Lead)" class="btn btn-success" ng-disabled="Lead.aprovada==1">
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+										</button>
+									</td>
+									<td>
+										<button ng-click="vm.reprovar(Lead)" class="btn btn-danger" ng-disabled="Lead.aprovada==2">
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="8" class="text-center">
+										<div st-pagination="" st-items-by-page="20" st-displayed-pages="5"></div>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<modal id="modal-cadastro">
+	<div class="modal" ng-click="vm.closeModal('modal-cadastro')">
+		<div class="modal-body" ng-click="$event.stopPropagation()">
+			<h2>Cadastro</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default" style="margin-top: 0;">
+						<div class="panel-heading">
+							<h1> Dados do Aluno:</h1>
+						</div>
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item">Nome: {{vm.modalCadastro.nome}}</li>
+								<li class="list-group-item">E-mail: {{vm.modalCadastro.email}}</li>
+								<li class="list-group-item">CPF: {{vm.modalCadastro.cpf}}</li>
+								<li class="list-group-item">Telefone: {{vm.modalCadastro.telefone}}</li>
+								<li class="list-group-item" ng-if="vm.modalCadastro.idade=='maior'">CPF: {{vm.modalCadastro.cpf}}</li>
+								<li class="list-group-item">Estado: {{vm.modalCadastro.estado}}</li>
+								<li class="list-group-item">Cidade: {{vm.modalCadastro.cidade}}</li>
+								<li class="list-group-item">Unidade: {{vm.modalCadastro.unidade}}</li>
+								<li class="list-group-item">Código: {{vm.modalCadastro.codigo}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-default" style="margin-top: 0;">
+						<div class="panel-heading">
+							<h1> Dados da Estampa:</h1>
+						</div>
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item">Título: {{vm.modalEstampa.titulo}}</li>
+								<li class="list-group-item">Votos: {{vm.modalEstampa.votos}}</li>
+								<li class="list-group-item text-info" ng-show="vm.modalEstampa.status == 0">Status: Aguardando</li>
+								<li class="list-group-item text-success" ng-show="vm.modalEstampa.status == 1">Status: Aprovada</li>
+								<li class="list-group-item text-danger" ng-show="vm.modalEstampa.status == 2">Status: Reprovada</li>
+							</ul>
+							<img id="estampaP" class="" width="100%" height="" ng-src="{{vm.estampaURL}}" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<button ng-click="vm.closeModal( 'modal-cadastro'); ">Close</button>
+		</div>
+	</div>
+	<div class="modal-background"></div>
+</modal>

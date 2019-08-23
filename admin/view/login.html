@@ -1,0 +1,52 @@
+<div id="wrapper" data-widget>
+	<div id="layout-static">
+		<div class="static-content-wrapper">
+			<div class="static-content">
+				<div class="login-content panelLoading">
+					<form class="login-form" ng-submit="login()" role="form">
+						<h3 class="form-title">Login</h3>
+						<div class="alert alert-danger" ng-show="alert">
+							<button class="close" data-close="alert"></button>
+							<span>
+								Entre com seu email e senha.
+							</span>
+						</div>
+						<div class="form-group">
+							<label class="control-label" ng-show="IE">E-mail</label>
+							<input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="E-mail" name="username"
+							    id="username" ng-model="username" required>
+						</div>
+						<div class="form-group">
+							<label class="control-label" ng-show="IE">Senha</label>
+							<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Senha"
+							    name="password" ng-model="password" id="password">
+						</div>
+						<div style="text-align: center" class="form-actions">
+							<button type="submit" class="btn btn-success uppercase" ng-disabled="form.$invalid || dataLoading">Login</button>
+							<!--<a href="javascript:;" id="forget-password" class="forget-password">Esqueceu a senha?</a> -->
+						</div>
+						<div class="create-account">
+							<p>
+								<a id="register-btn" class="uppercase" style="cursor: context-menu;">Microlins - Sonhe Grande</a>
+							</p>
+						</div>
+					</form>
+					<!-- 
+					<form class="forget-form" action="index.html" method="post" novalidate="novalidate" ng-show="forgetPass">
+						<h3>Forget Password ?</h3>
+						<p>
+							Enter your e-mail address below to reset your password.
+						</p>
+						<div class="form-group">
+							<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email">
+						</div>
+						<div class="form-actions">
+							<button type="button" id="back-btn" class="btn btn-default">Back</button>
+							<button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
+						</div>
+					</form> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

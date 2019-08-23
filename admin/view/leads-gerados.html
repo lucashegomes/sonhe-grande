@@ -1,0 +1,258 @@
+<div class="container-fluid">
+    <div data-widget-group="group1">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-default" data-widget='{"draggable": "false"}'>
+                    <div class="panel-heading">
+                        <h1>{{vm.unidade.Name}}</h1>
+
+                        <div class="panel-ctrls"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-widget-group="group1">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-teal" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                    <div class="panel-heading" style="background-color: #dadada;border-color: #797979;">
+                        <h2 style="color: rgb(59, 59, 59);">Total de Leads</h2>
+                    </div>
+                    <div class="panel-body no-padding">
+                        <table class="table browsers m-n">
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">
+                                        <h1 style="margin: 0; font-size: 129px; font-weight: 700;">
+                                            {{vm.totalLeads}}
+                                        </h1>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-teal" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                    <div class="panel-heading" style="background-color: #006fca;border-color: #003057;">
+                        <h2 style="color: #e0f7fa;">Comparecimentos Confirmados</h2>
+                    </div>
+                    <div class="panel-body no-padding">
+                        <table class="table browsers m-n">
+                            <tbody>
+                                <tr>
+                                    <td>Confirmados</td>
+                                    <td class="text-right">{{vm.LeadsConfirmadosP | number:0}}%</td>
+                                    <td class="vam" style="width: 156px;">
+                                        <div class="progress m-n">
+                                            <div class="progress-bar progress-bar-teal" style="width: {{vm.LeadsConfirmadosP}}%; background-color: #607d8b"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-teal" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                    <div class="panel-heading" style="background-color: #d26069;border-color: #ff1c2e;">
+                        <h2 style="color: #fff;">Comparecimentos não Confirmados</h2>
+                    </div>
+                    <div class="panel-body no-padding">
+                        <table class="table browsers m-n">
+                            <tbody>
+                                <tr>
+                                    <td>Não Confirmados</td>
+                                    <td class="text-right">{{vm.LeadsNaoConfirmadosP | number:0}}%</td>
+                                    <td class="vam" style="width: 156px;">
+                                        <div class="progress m-n">
+                                            <div class="progress-bar progress-bar-teal" style="width: {{vm.LeadsNaoConfirmadosP}}%; background-color: #607d8b"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-if="vm.isMaster">
+            <div class="col-md-6">
+                <div class="panel panel-teal" data-widget="{'draggable': 'false'}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                    <div class="panel-heading" style="background-color: #17A74E;border-color: #17A74E;">
+                        <h2 style="color: #e0f7fa;">Leads por Unidade</h2>
+                    </div>
+                    <div class="panel-body no-padding">
+                        <table class="table browsers m-n">
+                            <tbody>
+                                <tr ng-repeat="unidade in vm.unidadesLeads">
+                                    <td>{{unidade.nome}}</td>
+                                    <td class="text-right">{{unidade.porc | number:0}}%</td>
+                                    <td class="vam" style="width: 156px;">
+                                        <div class="progress m-n">
+                                            <div class="progress-bar progress-bar-teal" style="width: {{unidade.porc}}%; background-color: #607d8b"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-teal" data-widget="{'draggable': 'false'}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                    <div class="panel-heading" style="background-color: #A7A517;border-color: #A7A517;">
+                        <h2 style="color: #e0f7fa;">Leads por Mídia</h2>
+                    </div>
+                    <div class="panel-body no-padding">
+                        <table class="table browsers m-n">
+                            <tbody>
+                                <tr ng-repeat="midia in vm.midiasLeads">
+                                    <td>{{midia.nome}}</td>
+                                    <td class="text-right">{{midia.porc | number:0}}%</td>
+                                    <td class="vam" style="width: 156px;">
+                                        <div class="progress m-n">
+                                            <div class="progress-bar progress-bar-teal" style="width: {{midia.porc}}%; background-color: #607d8b"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-sky" data-widget='{"draggable": "false"}'>
+                <div class="panel-heading" style="background-color: #9e9e9e;border-color: #9e9e9e;">
+                    <h2 style="color: #fafafa;">Últimos Leads</h2>
+                    <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table st-table="displayedCollection" st-safe-src="vm.Leads" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="5"></th>
+                                    <th colspan="3">
+                                        <input st-search="" class="form-control" placeholder="Busca" type="text" style="margin-bottom: 20px" />
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th st-sort="nome" style="padding-right:100px">Nome</th>
+                                    <th st-sort="email">E-mail</th>
+                                    <th>Telefone</th>
+                                    <th st-sort="LeadId">Lead ID</th>
+                                    <th>
+                                        <select st-input-event="change" st-search="confirmado">
+                                            <option value="">Todos</option>
+                                            <option value="Confirmado">Confirmado</option>
+                                            <option value="Aguardando">Aguardando</option>
+                                        </select>
+                                    </th>
+                                    <th>CPF</th>
+                                    <th st-sort="data">Data Cadastro</th>
+                                    <th>Ver</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="Lead in displayedCollection">
+                                    <td>{{Lead.nome}}</td>
+                                    <td>{{Lead.email}}</td>
+                                    <td>{{Lead.telefone}}</td>
+                                    <td>{{Lead.lead_id}}</td>
+                                    <td>
+                                        <p class="{{Lead.confirmado}}">
+                                            <b>
+                                                {{Lead.confirmado}}
+                                            </b>
+                                        </p>
+                                    </td>
+                                    <td>{{Lead.cpf}}</td>
+                                    <td>{{Lead.data}}</td>
+                                    <td>
+                                        <button ng-click="vm.openModal('modal-lead', Lead)" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <div st-pagination="" st-items-by-page="20" st-displayed-pages="5"></div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<modal id="modal-lead">
+    <div class="modal">
+        <div class="modal-body">
+            <h2>LEAD</h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    ID:
+                    <b>{{vm.modalLead.id}}</b>
+                </li>
+                <li class="list-group-item">
+                    Nome:
+                    <b>{{vm.modalLead.nome}}</b>
+                </li>
+                <li class="list-group-item">
+                    E-mail:
+                    <b>{{vm.modalLead.email}}</b>
+                </li>
+                <li class="list-group-item">
+                    Telefone:
+                    <b>{{vm.modalLead.telefone}}</b>
+                </li>
+                <li class="list-group-item">
+                    CPF:
+                    <b>{{vm.modalLead.cpf}}</b>
+                </li>
+                <li class="list-group-item">
+                    Unidade:
+                    <b>{{vm.modalLead.unidade}}</b>
+                </li>
+                <li class="list-group-item">
+                    Estado:
+                    <b>{{vm.modalLead.unidade_estado}}</b>
+                </li>
+                <li class="list-group-item">
+                    Cidade:
+                    <b>{{vm.modalLead.unidade_cidade}}</b>
+                </li>
+                <li class="list-group-item">
+                    Data Cadastro:
+                    <b>{{vm.modalLead.data}}</b>
+                </li>
+                <li class="list-group-item">
+                    Lead ID:
+                    <b>{{vm.modalLead.lead_id}}</b>
+                </li>
+                <li class="list-group-item">
+                    Confirmado:
+                    <b>{{(vm.modalLead.confirmado)? 'sim' : 'não'}}</b>
+                </li>
+            </ul>
+            <button ng-click="vm.closeModal('modal-lead');">Close</button>
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</modal>
